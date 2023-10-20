@@ -124,19 +124,23 @@ function updatePrice() {
 cartButton.onclick = () => {
   updatePrice();
 
+  if(cartValue.innerText == 0){
+    alert("Your shopping cart is empty!");
+    return
+  }
+
+  var text = ""
 
   for (let index = 0; index < items.length; index++) {
     if (items[index].quantity != 0) {
-      console.log(
-        "Item name: " +
-          items[index].name +
-          " - Quantity: " +
-          items[index].quantity
-      );
+      text += "Item name: " + items[index].name + " - Quantity: " + items[index].quantity + " "
     }
+    
   }
+ 
+  text +=  "The total amount is " + finalDollars + "$ and " + finalCents + " cents" + " "
+  
+  console.log("text: ",text)
 
-  console.log(
-    "The total amount is " + finalDollars + "$ and " + finalCents + " cents"
-  );
+  window.open("https://wa.me/8072275732?text="+ text,"_self")
 };
